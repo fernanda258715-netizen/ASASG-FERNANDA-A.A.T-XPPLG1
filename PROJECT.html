@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brew Heven Coffee</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f8f4ef;
+            color: #1e140f;
+        }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, .1);
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            font-size: 90px;
+            font-weight: bold;
+            color: #9b6a41;
+        }
+
+        .logo img {
+            width: 80px;
+            height: 60px;
+            border-radius: 50%;
+        }
+
+        .navbar {
+            width: 1000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .navbar a {
+            color: #1e140f;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            color: #9b6a41;
+        }
+
+        /* SECTION */
+        section {
+            padding: 100px 8%;
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: #9b6a41;
+        }
+
+        /* HOME */
+        .home {
+            min-height: 100vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 120px;
+            gap: 50px;
+        }
+
+        .home .content {
+            width: 50%;
+        }
+
+        .home .content span {
+            color: #9b6a41;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .home .content h1 {
+            font-size: 60px;
+            line-height: 1.1;
+            margin: 15px 0;
+        }
+
+        .home .content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .home .image {
+            width: 40%;
+        }
+
+        .home .image img {
+            width: 100%;
+            display: block;
+        }
+
+        /* BUTTON */
+        .btn {
+            display: inline-block;
+            background: #9b6a41;
+            color: #ffffff;
+            padding: 12px 30px;
+            border-radius: 30px;
+            transition: .3s;
+        }
+
+        .btn:hover {
+            background: #7d5332;
+        }
+
+        /* ABOUT */
+        .about .row {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about .image {
+            flex: 1;
+        }
+
+        .about .image img {
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        .about .content {
+            flex: 1;
+        }
+
+        .about .content h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .about .content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        /* MENU */
+        .menu .box-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .menu .box {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+            transition: .3s;
+        }
+
+        .menu .box:hover {
+            transform: scale(1.05);
+        }
+
+        .menu .box img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 15px;
+            display: block;
+            margin: auto;
+        }
+
+        .menu .box h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .menu .box p {
+            color: #666;
+            line-height: 1.6;
+            min-height: 80px;
+        }
+
+        .price {
+            margin-top: 15px;
+            color: #9b6a41;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* REVIEW */
+        .review .box-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .review .box {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+            transition: 0.3s;
+        }
+
+        .review .box:hover {
+            transform: scale(1.05);
+        }
+
+        .review .box i {
+            font-size: 4rem;
+            color: #9b6a41;
+            margin-bottom: 15px;
+        }
+
+        .review .box p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* BLOGS */
+        .blogs .box-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .blogs .box {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+            transition: .3s;
+        }
+
+        .blogs .box:hover {
+            transform: translateY(-10px);
+        }
+
+        .blogs .box img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .blogs .content {
+            padding: 20px;
+        }
+
+        .blogs .content h3 {
+            margin-bottom: 10px;
+        }
+
+        .blogs .content p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        /* POPUP */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .07);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .popup:target {
+            display: flex;
+        }
+
+        .popup-content {
+            width: 600px;
+            max-width: 90%;
+            background: #fff;
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .popup-content img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        .popup-content h2 {
+            color: #9b6a41;
+            margin-bottom: 15px;
+        }
+
+        .popup-content p {
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+    </style>
+</head>
+
+<html>
+<body>
+    <!--HEADER-->
+    <header>
+        <a href="#" class="logo">
+            <img src="WhatsApp Image 2026-05-04 at 08.58.30.jpeg">
+        </a>
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#menu">Menu</a>
+            <a href="#review">Review</a>
+            <a href="#blogs">Blogs</a>
+        </nav>
+    </header>
+
+    <!--HOME-->
+    <section class="home" id="home">
+        <div class="content">
+            <span>BEST COFFEE IN TOWN</span>
+            <h1>
+                ENJOY YOUR <br>
+                COFFEE MOMENT
+            </h1>
+            <p>
+                Nikmati kopi terbaik dengan cita rasa premium,
+                aroma yang khas, dan pengalaman ngopi yang
+                tidak terlupakan cocok untuk menemani hari-harimu.
+            </p>
+            <a href="#menu" class="btn">
+                Explore Menu
+            </a>
+        </div>
+        <div class="image">
+            <img src="c:\Users\user\Documents\projwk\WhatsApp_Image_2026-05-04_at_13.20.51-removebg-preview (1).png"
+                alt="Coffee">
+        </div>
+    </section>
+
+    <!--ABOUT-->
+    <section class="about" id="about">
+        <h1 class="heading">
+            ABOUT US
+        </h1>
+        <div class="row">
+            <div class="image">
+                <img src="c:\Users\user\Documents\projwk\Screenshot 2026-06-01 184526.png" alt="about">
+            </div>
+            <div class="content">
+                <h3>What Makes Our Coffee Special?</h3>
+                <p>
+                    Best coffee in town adalah tempat yang menghadirkan kenikmati
+                    kopi dengan suasana yang nyaman dan hangat.
+                    Kami percaya bahwa secangkir kopi bukan hanya minuman,
+                    tetapi juga teman dalam berbagai aktivitas sehari-hari,
+                    mulai dari belajar, bekerja, berkumpul sama teman dan keluarga.
+                </p>
+                <p>
+                    Kami menggunakan biji kopi pilihan yang diproses dengan teliti untuk
+                    menghasilkan cita rasa terbaik.
+                    Setiap menu dibuat dengan bahan berkualitas dan disajikan dengan
+                    dengan penuh perhatian agar setiap pelanggan mendapatkan pengalaman yang memuaskan.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!--MENU-->
+    <section class="menu" id="menu">
+        <h1 class="heading">
+            OUR MENU
+        </h1>
+        <div class="box-container">
+            <div class="box">
+                <img src="c:\Users\user\Documents\projwk\94e47d02-94ec-48bf-8f16-72cbcbb8eb51.png">
+                <h3> Espresso</h3>
+                <p>Kopi hitam dengan cita rasa kuat dan
+                    aroma khas yang memberikan energi
+                    untuk memulai hari.
+                </p>
+                <div class="price">$15.000</div>
+            </div>
+            <div class="box">
+                <img src="c:\Users\user\Documents\projwk\c4e4e161-d200-48d3-ad23-14d09b7ea6ed.png">
+                <h3>Cappuccino</h3>
+                <p>Perpaduan espresso, susu, dan foam lembut yang
+                    menghasilkan rasa seimbang dan nikmat.
+                </p>
+                <div class="price">$20.000</div>
+            </div>
+            <div class="box">
+                <img src="c:\Users\user\Documents\projwk\Screenshot 2026-06-01 182423.png">
+                <h3>Matcha Latte</h3>
+                <p>Minuman Matcha premium dengan tekstur
+                    creamy dan rasa manis yang menyegarkan
+                </p>
+                <div class="price">$25.000</div>
+            </div>
+        </div> <!--box-container-->
+    </section>
+
+    <!--REVIEW-->
+    <section class="review" id="review">
+        <h1 class="heading">CUSTOMER REVIEW</h1>
+        <div class="box-container">
+            <div class="box">
+                <h3>👤⭐⭐⭐⭐⭐</h3>
+                <h4>Andi Pratama</h4>
+                <p>Kopinya sangat enak dan pelayananya ramah.
+                    Cocok untuk menemani mengerjakan tugas atau bersantai.
+                </p>
+            </div>
+            <div class="box">
+                <h3>👤⭐⭐⭐⭐⭐</h3>
+                <h4>Clara anindci</h4>
+                <p>Aroma kopinya sangat khas banget dan pelayananya ramah.
+                    cocok dinikmati kapan saja.
+                </p>
+            </div>
+            <div class="box">
+                <h3>👤⭐⭐⭐⭐⭐</h3>
+                <h4>belicna arci</h4>
+                <p>Kualitas kopi sangat baik dengan cita rasa yang konsisten
+                    dan aroma yang menggugah selera.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!--BLOGS-->
+    <section class="blogs" id="blogs">
+        <h1 class="heading">OUR BLOGS</h1>
+        <div class="box-container">
+            <div class="box">
+                <img src="c:\Users\user\Documents\projwk\Screenshot 2026-06-03 013800.png">
+                <div class="content">
+                    <h3>Cara membuat kopi rumahan</h3>
+                    <p>Pelajari cara membuat kopi
+                        sederhana yang nikmat di rumah.
+                    </p>
+                    <a href="#blog1" class="btn">Read More</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="c:\Users\user\Documents\projwk\Screenshot 2026-06-03 013844.png">
+                <div class="content">
+                    <h3>Resep Es kopi Susu</h3>
+                    <p>Minuman kopi dingin yang cocok untuk cuaca panas.
+                    </p>
+                    <a href="#blog2" class="btn">Read More</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="c:\Users\user\Documents\projwk\Screenshot 2026-06-03 013600.png">
+                <div class="content">
+                    <h3>Tips menyeduh kopi</h3>
+                    <p>Beberapa tips sederhana agar kopi terasa lebih nikmat.
+                    </p>
+                    <a href="#blog3" class="btn">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="blog1" class="popup">
+        <div class="popup-content">
+            <a href="#blogs" class="close">&times;</a>
+            <img src="WhatsApp Image 2026-06-03 at 08.00.48.jpeg">
+            <h2>Cara membuat kopi rumahan</h2>
+            <p>
+                1. Siapkan kopi bubuk dan air panas.<br>
+                2. Masukkan kopi kedalam gelas.<br>
+                3. Tuangkan air panas perlahan.<br>
+                4. Aduk hingga merata.<br>
+                5. Kopi siap dinikmati.<br>
+            </p>
+        </div>
+    </div>
+    <div id="blog2" class="popup">
+        <div class="popup-content">
+            <a href="#blogs" class="close">&times;</a>
+            <img src="WhatsApp Image 2026-06-03 at 08.00.48.jpeg">
+            <h2>Resep Es kopi susu</h2>
+            <p>
+                1. Seduh jopi terlebih dahulu.<br>
+                2. Tambahkan susu cair.<br>
+                3. Masukkan Es batu.<br>
+                4. Tambahkan gula sesuai selera.<br>
+                5. Aduk dan sajikan.<br>
+            </p>
+        </div>
+    </div>
+    <div id="blog3" class="popup">
+        <div class="popup-content">
+            <a href="#blogs" class="close">&times;</a>
+            <img src="WhatsApp Image 2026-06-03 at 08.00.48.jpeg">
+            <h2>Tips Menyeduh kopi</h2>
+            <p>
+                1. Gunakan biji kopi yang masih segar.<br>
+                2. Perhatikan suhu air sekitar 90-95℃.<br>
+                3. Gunakan takaran kopi yang sesuai.<br>
+                4. Seduh perlahan agaar aroma keluar maksimal.<br>
+                5. Kopi siap dinikmati.<br>
+            </p>
+        </div>
+    </div>
+    <footer>
+        © 2026 Brew Haven Coffee - Good Coffee, Good Day
+    </footer>
+
+</body>
+</html>
